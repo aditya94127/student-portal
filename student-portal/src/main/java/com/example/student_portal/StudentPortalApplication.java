@@ -1,5 +1,7 @@
 package com.example.student_portal;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,8 +20,35 @@ public class StudentPortalApplication {
 	public CommandLineRunner  commandLineRunner(StudentDAO studentDAO) {
 		return runner ->{
 //			createStudent(studentDAO);
-			findStudentById(studentDAO);
+//			findStudentById(studentDAO);
+//			findAllStudent(studentDAO);
+//			findStudentByLastName(studentDAO);
+			deleteStudent(studentDAO);
 		};
+	}
+	private void deleteStudent(StudentDAO studentDAO) {
+		// TODO Auto-generated method stub
+		studentDAO.deleteById(1);
+		Student s1=studentDAO.findById(1);
+		System.out.println(s1);
+	}
+	private void findStudentByLastName(StudentDAO studentDAO) {
+		// TODO Auto-generated method stub
+		List<Student> s1=studentDAO.findByLastName("Ax");
+		for(Student i:s1) {
+			System.out.println(i);
+		}
+		
+	}
+	private void findAllStudent(StudentDAO studentDAO) {
+		// TODO Auto-generated method stub
+		
+		List<Student> s=studentDAO.findAll();
+		for(Student i:s) {
+			System.out.println(i);
+		}
+		
+		
 	}
 	private void findStudentById(StudentDAO studentDAO) {
 		// TODO Auto-generated method stub
